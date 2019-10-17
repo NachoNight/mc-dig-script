@@ -20,11 +20,13 @@ end
 function StartDigging()
 	while Width > 1 do
 		Dig(i)
-		Width -= 1
+		Width = Width - 1
 	end
 	write("Keep digging? (Y/n)")
 	local Answer = read()
-	if(Answer:lower() == "y") Start()
+	if(Answer:lower() == "y") then 
+		Start()
+	end
 	print("Done!")
 end
 
