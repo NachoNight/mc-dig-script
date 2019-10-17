@@ -10,7 +10,7 @@ end
 -- Dig function
 local function Dig(num)
 	turtle.turnRight()
-	for i, num do
+	for i=1, num do
 		turtle.dig()
 	end
 	turtle.turnRight()
