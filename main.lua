@@ -1,26 +1,33 @@
-turtle.refuel()
+local passes = 0
 
 local function Start()
-	write("Width: ")
-	local Width = read()
-	write("Length: ")
-	local Length = read()
+	StartDigging()
 end
 
--- Dig function
 local function Dig(num)
-	turtle.turnRight()
-	for i=1, num do
-		turtle.dig()
+	for i = 1, num do
+		-- If a block exists:
+		if turtle.detect() then
+			turtle.dig()
+			turtle.forward()
+		else
+			-- No block
+			turtle.forward();
+			Dig(num - 1)
+		end
 	end
-	turtle.turnRight()
 end
 
 -- Startup function
 function StartDigging()
-	while Width > 1 do
-		Dig(i)
-		Width = Width - 1
+	write("Width: ")
+	local width = tonumber(read())
+	while width ~= passes do
+		Dig(width)
+		passes = passes	+ 1
+		turtle.turnRight()
+		Dig(1)
+		turtle.turnRight()
 	end
 	write("Keep digging? (Y/n)")
 	local Answer = read()
@@ -30,4 +37,4 @@ function StartDigging()
 	print("Done!")
 end
 
-StartDigging()
+Start()
