@@ -104,11 +104,12 @@ local function channelForward(length)
 end
 
 function reset()
-    local target = math.ceil(size / 2) - 1
+    local target = math.ceil(size / 2)
+    if (size % 2 ~= 0) then target = target - 1 end
     turtle.turnLeft()
     for i = 1, target do turtle.back() end
     turtle.turnLeft()
-    for i = 1, target - 1 do turtle.back() end
+    for i = 1, target do turtle.back() end
 end
 
 local function digLoop()
