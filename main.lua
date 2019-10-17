@@ -1,15 +1,31 @@
 turtle.refuel()
 
-write("Width: ")
-local Width = read()
-write("Length: ")
-local Length = read()
+local function Start()
+	write("Width: ")
+	local Width = read()
+	write("Length: ")
+	local Length = read()
+end
 
+-- Dig function
 local function Dig(num)
-	print(num)
+	turtle.turnRight()
+	for i, num do
+		turtle.dig()
+	end
+	turtle.turnRight()
 end
 
-for i=1, Width do
-	Dig(i)
+-- Startup function
+function StartDigging()
+	while Width > 1 do
+		Dig(i)
+		Width -= 1
+	end
+	write("Keep digging? (Y/n)")
+	local Answer = read()
+	if(Answer:lower() == "y") Start()
+	print("Done!")
 end
 
+StartDigging()
